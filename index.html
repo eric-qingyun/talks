@@ -209,6 +209,31 @@
   .recap-tag { display: inline-block; padding: 1px 10px; background: var(--c-blue); color: var(--c-white); border-radius: 2px; font-size: 12px; font-weight: 700; margin-right: 10px; vertical-align: 1px; }
   .closing-cta { font-size: 22px; color: var(--c-red); font-weight: 700; margin-top: 32px; }
   .closing-q { font-size: 32px; color: var(--c-blue); margin-top: 24px; letter-spacing: 0.1em; }
+
+  /* === Presenter Mode UI === */
+  .presenter-toggle { position: fixed; right: 20px; bottom: 20px; z-index: 1000; padding: 8px 14px; background: var(--c-white); border: 1px solid var(--c-blue); color: var(--c-blue); border-radius: 20px; font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 8px rgba(31,61,122,0.15); transition: all 150ms; }
+  .presenter-toggle:hover { background: var(--c-blue); color: var(--c-white); }
+  .presenter-indicator { position: fixed; right: 20px; bottom: 64px; z-index: 1000; padding: 4px 12px; background: rgba(255,255,255,0.92); border: 1px solid var(--c-gray-border); color: var(--c-blue); border-radius: 12px; font-family: var(--font-en); font-size: 13px; font-weight: 600; }
+
+  /* === Presenter Mode 生效样式 === */
+  .presenter body { scroll-snap-type: y mandatory; overflow-y: scroll; height: 100vh; }
+  .presenter section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 56px; padding-bottom: 56px; max-width: 1100px; }
+  .presenter .cover { padding: 0; }
+  .presenter h1 { font-size: 84px; }
+  .presenter h2 { font-size: 44px; }
+  .presenter h3 { font-size: 30px; }
+  .presenter h4 { font-size: 26px; }
+  .presenter p, .presenter li { font-size: 20px; line-height: 1.7; }
+  .presenter .section-subtitle { font-size: 22px; }
+  .presenter .formula { font-size: 24px; }
+  .presenter .formula-hero { font-size: 30px; }
+  .presenter .formula-hero .katex { font-size: 2.2em; }
+  .presenter .jung-cell { padding: 18px 22px; }
+  .presenter .chip { font-size: 16px; padding: 7px 18px; }
+  .presenter .scene-tab { font-size: 16px; padding: 8px 18px; }
+  .presenter .why-step { font-size: 16px; }
+  .presenter .cover-title { font-size: 84px; }
+  .presenter .cover-sub { font-size: 26px; }
 </style>
 </head>
 <body>
@@ -604,6 +629,10 @@
 <script id="katex-autorender-js">/* KaTeX Auto-Render 内嵌 JS */
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t(require("katex")):"function"==typeof define&&define.amd?define(["katex"],t):"object"==typeof exports?exports.renderMathInElement=t(require("katex")):e.renderMathInElement=t(e.katex)}("undefined"!=typeof self?self:this,(function(e){return function(){"use strict";var t={771:function(t){t.exports=e}},n={};function r(e){var o=n[e];if(void 0!==o)return o.exports;var i=n[e]={exports:{}};return t[e](i,i.exports,r),i.exports}r.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(t,{a:t}),t},r.d=function(e,t){for(var n in t)r.o(t,n)&&!r.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},r.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)};var o={};return function(){r.d(o,{default:function(){return d}});var e=r(771),t=r.n(e);const n=function(e,t,n){let r=n,o=0;const i=e.length;for(;r<t.length;){const n=t[r];if(o<=0&&t.slice(r,r+i)===e)return r;"\\"===n?r++:"{"===n?o++:"}"===n&&o--,r++}return-1},i=/^\\begin{/;var a=function(e,t){let r;const o=[],a=new RegExp("("+t.map((e=>e.left.replace(/[-/\\^$*+?.()|[\]{}]/g,"\\$&"))).join("|")+")");for(;r=e.search(a),-1!==r;){r>0&&(o.push({type:"text",data:e.slice(0,r)}),e=e.slice(r));const a=t.findIndex((t=>e.startsWith(t.left)));if(r=n(t[a].right,e,t[a].left.length),-1===r)break;const l=e.slice(0,r+t[a].right.length),s=i.test(l)?l:e.slice(t[a].left.length,r);o.push({type:"math",data:s,rawData:l,display:t[a].display}),e=e.slice(r+t[a].right.length)}return""!==e&&o.push({type:"text",data:e}),o};const l=function(e,n){const r=a(e,n.delimiters);if(1===r.length&&"text"===r[0].type)return null;const o=document.createDocumentFragment();for(let e=0;e<r.length;e++)if("text"===r[e].type)o.appendChild(document.createTextNode(r[e].data));else{const i=document.createElement("span");let a=r[e].data;n.displayMode=r[e].display;try{n.preProcess&&(a=n.preProcess(a)),t().render(a,i,n)}catch(i){if(!(i instanceof t().ParseError))throw i;n.errorCallback("KaTeX auto-render: Failed to parse `"+r[e].data+"` with ",i),o.appendChild(document.createTextNode(r[e].rawData));continue}o.appendChild(i)}return o},s=function(e,t){for(let n=0;n<e.childNodes.length;n++){const r=e.childNodes[n];if(3===r.nodeType){let o=r.textContent,i=r.nextSibling,a=0;for(;i&&i.nodeType===Node.TEXT_NODE;)o+=i.textContent,i=i.nextSibling,a++;const s=l(o,t);if(s){for(let e=0;e<a;e++)r.nextSibling.remove();n+=s.childNodes.length-1,e.replaceChild(s,r)}else n+=a}else if(1===r.nodeType){const e=" "+r.className+" ";-1===t.ignoredTags.indexOf(r.nodeName.toLowerCase())&&t.ignoredClasses.every((t=>-1===e.indexOf(" "+t+" ")))&&s(r,t)}}};var d=function(e,t){if(!e)throw new Error("No element provided to render");const n={};for(const e in t)t.hasOwnProperty(e)&&(n[e]=t[e]);n.delimiters=n.delimiters||[{left:"$$",right:"$$",display:!0},{left:"\\(",right:"\\)",display:!1},{left:"\\begin{equation}",right:"\\end{equation}",display:!0},{left:"\\begin{align}",right:"\\end{align}",display:!0},{left:"\\begin{alignat}",right:"\\end{alignat}",display:!0},{left:"\\begin{gather}",right:"\\end{gather}",display:!0},{left:"\\begin{CD}",right:"\\end{CD}",display:!0},{left:"\\[",right:"\\]",display:!0}],n.ignoredTags=n.ignoredTags||["script","noscript","style","textarea","pre","code","option"],n.ignoredClasses=n.ignoredClasses||[],n.errorCallback=n.errorCallback||console.error,n.macros=n.macros||{},s(e,n)}}(),o=o.default}()}));
 </script>
+<!-- 演讲者模式 UI -->
+<button id="presenter-toggle" class="presenter-toggle" type="button" aria-label="切换演讲者模式">▶ 演讲者</button>
+<div id="presenter-indicator" class="presenter-indicator" hidden>1 / 8</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   renderMathInElement(document.body, {
@@ -625,6 +654,83 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('section').forEach(function(s) {
     if (s.id !== 's00') observer.observe(s);
   });
+
+  // === 演讲者模式 ===
+  var body = document.body;
+  var btn = document.getElementById('presenter-toggle');
+  var indicator = document.getElementById('presenter-indicator');
+  var sections = Array.from(document.querySelectorAll('section'));
+
+  function isPresenter() { return body.classList.contains('presenter'); }
+
+  function updateIndicator() {
+    if (!isPresenter()) return;
+    var current = 1;
+    var midY = window.innerHeight / 2;
+    for (var i = 0; i < sections.length; i++) {
+      var r = sections[i].getBoundingClientRect();
+      if (r.top <= midY && r.bottom > midY) { current = i + 1; break; }
+    }
+    indicator.textContent = current + ' / ' + sections.length;
+  }
+
+  function enterPresenter() {
+    body.classList.add('presenter');
+    btn.textContent = '✕ 退出';
+    indicator.hidden = false;
+    updateIndicator();
+  }
+  function exitPresenter() {
+    body.classList.remove('presenter');
+    btn.textContent = '▶ 演讲者';
+    indicator.hidden = true;
+  }
+  function togglePresenter() { isPresenter() ? exitPresenter() : enterPresenter(); }
+
+  btn.addEventListener('click', togglePresenter);
+
+  function gotoIndex(idx) {
+    if (idx < 0) idx = 0;
+    if (idx >= sections.length) idx = sections.length - 1;
+    sections[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var target = sections[idx];
+    target.classList.remove('in-view');
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() { target.classList.add('in-view'); });
+    });
+  }
+  function currentIndex() {
+    var midY = window.innerHeight / 2;
+    for (var i = 0; i < sections.length; i++) {
+      var r = sections[i].getBoundingClientRect();
+      if (r.top <= midY && r.bottom > midY) return i;
+    }
+    return 0;
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'p' || e.key === 'P') { togglePresenter(); e.preventDefault(); return; }
+    if (!isPresenter()) return;
+    switch (e.key) {
+      case 'ArrowRight': case 'ArrowDown': case 'PageDown': case ' ':
+        gotoIndex(currentIndex() + 1); e.preventDefault(); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp':
+        gotoIndex(currentIndex() - 1); e.preventDefault(); break;
+      case 'Home':
+        gotoIndex(0); e.preventDefault(); break;
+      case 'End':
+        gotoIndex(sections.length - 1); e.preventDefault(); break;
+      case 'Escape':
+        exitPresenter(); e.preventDefault(); break;
+    }
+  });
+
+  window.addEventListener('scroll', function() {
+    if (isPresenter()) updateIndicator();
+  }, { passive: true });
+  document.body.addEventListener('scroll', function() {
+    if (isPresenter()) updateIndicator();
+  }, { passive: true });
 });
 </script>
 </body>
