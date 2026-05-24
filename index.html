@@ -75,9 +75,13 @@
   .section-title { margin-bottom: 8px; }
   .section-subtitle { color: var(--c-gray); font-size: 18px; line-height: 1.6; margin-bottom: 32px; }
 
-  /* === 入场动画基础（具体激活在 Task 7） === */
-  section { opacity: 1; transform: none; }
-  /* placeholder; 在 Task 7 改成 opacity:0 + .in-view 触发 */
+  /* === Entrance Animation === */
+  section { opacity: 0; transform: translateY(24px); transition: opacity 500ms ease-out, transform 500ms ease-out; }
+  section.in-view { opacity: 1; transform: translateY(0); }
+  #s00 { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    section { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
 
   /* === Cover === */
   .cover { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 0; padding-bottom: 0; }
@@ -608,6 +612,18 @@ document.addEventListener('DOMContentLoaded', function() {
       {left: '$', right: '$', display: false}
     ],
     throwOnError: false
+  });
+
+  // === 入场动画 ===
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('section').forEach(function(s) {
+    if (s.id !== 's00') observer.observe(s);
   });
 });
 </script>
