@@ -731,6 +731,48 @@ document.addEventListener('DOMContentLoaded', function() {
   document.body.addEventListener('scroll', function() {
     if (isPresenter()) updateIndicator();
   }, { passive: true });
+
+  // === 荣格 8 维点击展开（accordion）===
+  document.querySelectorAll('.jung-cell').forEach(function(cell) {
+    cell.addEventListener('click', function() {
+      var wasOpen = cell.classList.contains('is-open');
+      document.querySelectorAll('.jung-cell.is-open').forEach(function(c) { c.classList.remove('is-open'); });
+      if (!wasOpen) cell.classList.add('is-open');
+    });
+  });
+
+  // === 名场面 tab 切换 ===
+  document.querySelectorAll('.scene-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var name = tab.getAttribute('data-tab');
+      var block = tab.closest('.scene-block');
+      block.querySelectorAll('.scene-tab').forEach(function(t) { t.classList.remove('is-active'); });
+      block.querySelectorAll('.scene-panel').forEach(function(p) { p.classList.remove('is-active'); });
+      tab.classList.add('is-active');
+      block.querySelector('.scene-panel[data-panel="' + name + '"]').classList.add('is-active');
+    });
+  });
+
+  // === 盖洛普 chip 点击展开（每栏独立）===
+  document.querySelectorAll('.gallup-domain').forEach(function(domain) {
+    var detail = domain.querySelector('.gallup-detail');
+    domain.querySelectorAll('.chip').forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        var wasActive = chip.classList.contains('is-active');
+        domain.querySelectorAll('.chip').forEach(function(c) { c.classList.remove('is-active'); });
+        if (wasActive) {
+          detail.hidden = true;
+          detail.innerHTML = '';
+        } else {
+          chip.classList.add('is-active');
+          var name = chip.getAttribute('data-name');
+          var desc = chip.getAttribute('data-desc');
+          detail.hidden = false;
+          detail.innerHTML = '<strong>' + name + '</strong>（' + desc + '）';
+        }
+      });
+    });
+  });
 });
 </script>
 </body>
