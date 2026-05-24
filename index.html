@@ -73,25 +73,89 @@
   /* === 入场动画基础（具体激活在 Task 7） === */
   section { opacity: 1; transform: none; }
   /* placeholder; 在 Task 7 改成 opacity:0 + .in-view 触发 */
+
+  /* === Cover === */
+  .cover { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 0; padding-bottom: 0; }
+  .cover-inner { max-width: 720px; }
+  .cover-label { font-family: var(--font-en); font-size: 13px; letter-spacing: 0.15em; color: var(--c-red); margin-bottom: 24px; font-weight: 600; }
+  .cover-title { font-size: 64px; line-height: 1.2; margin-bottom: 20px; color: var(--c-blue); }
+  .cover-sub { font-size: 20px; color: var(--c-gray); margin-bottom: 80px; }
+  .cover-hint { font-size: 14px; color: var(--c-gray); letter-spacing: 0.1em; }
+
+  /* === Quote === */
+  .quote { border-left: 2px solid var(--c-gray-line); padding: 8px 0 8px 16px; font-style: italic; color: var(--c-gray); margin: 16px 0; font-size: 16px; line-height: 1.8; }
+  .quote-attr { font-style: normal; font-size: 13px; }
+
+  /* === Formula 容器 === */
+  .formula { background: var(--c-callout-bg); border-left: 3px solid var(--c-blue); padding: 20px 24px; margin: 24px 0; border-radius: 4px; font-size: 18px; text-align: center; }
+  .formula .katex { font-size: 1.4em; }
+
+  /* === X-Block (常见卡点提示框) === */
+  .x-block { display: flex; gap: 12px; padding: 16px 20px; background: var(--c-red-bg); border-radius: 4px; margin: 24px 0; line-height: 1.7; }
+  .x-mark { font-size: 20px; flex-shrink: 0; }
+
+  /* === Three Pillars (三柱) === */
+  .three-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+  .pillar { background: var(--c-white); border-left: 3px solid var(--c-blue); padding: 20px 22px; border-radius: 4px; }
+  .pillar h4 { color: var(--c-red); font-size: 18px; margin-bottom: 8px; }
+  .pillar p { font-size: 15px; line-height: 1.7; }
+  .hl-blue { color: var(--c-blue); font-weight: 600; }
 </style>
 </head>
 <body>
 
 <!-- ===== Section 00 · 封面 ===== -->
-<section id="s00" data-num="0">
-  <h2 class="section-title">[封面]</h2>
+<section id="s00" data-num="0" class="cover">
+  <div class="cover-inner">
+    <div class="cover-label">分享 · 2026.05.25</div>
+    <h1 class="cover-title">如何快速寻找到<br>自己的天选事业</h1>
+    <p class="cover-sub">探索天选事业方向的通用技巧分享</p>
+    <p class="cover-hint">↓ 向下滚动开始</p>
+  </div>
 </section>
 
 <!-- ===== Section 01 · 命题 & 叠甲 ===== -->
 <section id="s01" data-num="1">
   <span class="section-label">01 · 命题</span>
-  <h2 class="section-title">[命题 & 叠甲]</h2>
+  <h2 class="section-title">为什么传统的"天选事业"公式总让你卡死？</h2>
+  <p class="section-subtitle">叠个甲：本套路不是完美公式，有用就行。</p>
+
+  <h4 style="margin-top:32px">1. 传统模型：刺猬理论</h4>
+  <p class="quote">"狐狸知道很多事情，但刺猬知道一件大事。"<br><span class="quote-attr">— 吉姆·柯林斯《从优秀到卓越》</span></p>
+
+  <p style="margin-top:24px">传统公式：</p>
+  <div class="formula" data-katex>$$天选事业 = 热爱 \cap 擅长 \cap 商业价值$$</div>
+
+  <div class="x-block">
+    <span class="x-mark">❌</span>
+    <div>
+      <strong>常见卡点：</strong>这个模型太静态、太孤立了。就像相亲时硬性要求对方必须满足"生理性喜欢（热爱） + 灵魂伴侣（擅长） + 还要贼有钱（商业）"，结果就是直接卡死，寸步难行。
+    </div>
+  </div>
 </section>
 
 <!-- ===== Section 02 · 心理学重构 ===== -->
 <section id="s02" data-num="2">
   <span class="section-label">02 · 心理学重构</span>
-  <h2 class="section-title">[解构"找不到的热爱"]</h2>
+  <h2 class="section-title">用心理学降维：解构"找不到的热爱"</h2>
+  <p class="section-subtitle">引入理论：自我决定论（Self-Determination Theory）</p>
+
+  <div class="formula" data-katex>$$热爱 = 自主感 + 胜任感 + 归属感$$</div>
+
+  <div class="three-pillars">
+    <div class="pillar">
+      <h4>自主感</h4>
+      <p>我自己想去做，而不是被谁指使（等同于<span class="hl-blue">兴趣</span>）。</p>
+    </div>
+    <div class="pillar">
+      <h4>胜任感</h4>
+      <p>事情不断做成，让我很有成就感（正向反哺<span class="hl-blue">擅长</span>）。</p>
+    </div>
+    <div class="pillar">
+      <h4>归属感</h4>
+      <p>在群体中被需要、被认可（正向催化<span class="hl-blue">商业价值</span>）。</p>
+    </div>
+  </div>
 </section>
 
 <!-- ===== Section 03 · 认知科学重构 ===== -->
