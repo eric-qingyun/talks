@@ -100,6 +100,23 @@
   .pillar h4 { color: var(--c-red); font-size: 18px; margin-bottom: 8px; }
   .pillar p { font-size: 15px; line-height: 1.7; }
   .hl-blue { color: var(--c-blue); font-weight: 600; }
+
+  /* === Callout Key (📌 关键结论) === */
+  .callout-key { background: var(--c-callout-bg); border-left: 3px solid var(--c-blue); padding: 20px 24px; border-radius: 4px; margin: 32px 0 24px; }
+  .callout-label { font-weight: 700; color: var(--c-blue); margin-bottom: 8px; font-size: 16px; }
+  .callout-key p { line-height: 1.8; }
+
+  /* === Flow Chain (增强回路横向链路) === */
+  .flow-chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 6px; margin: 16px 0 8px; }
+  .flow-node { flex: 1 1 140px; background: var(--c-white); border: 1px solid var(--c-gray-border); border-left: 3px solid var(--c-blue); border-radius: 4px; padding: 12px 14px; font-size: 13px; line-height: 1.5; display: flex; flex-direction: column; gap: 6px; }
+  .flow-tag { display: inline-block; align-self: flex-start; padding: 1px 8px; background: var(--c-blue); color: var(--c-white); border-radius: 2px; font-size: 11px; font-weight: 600; }
+  .flow-final { border-left-color: var(--c-red); }
+  .flow-final .flow-tag { background: var(--c-red); }
+  .flow-arrow { color: var(--c-blue); font-weight: 700; font-size: 18px; align-self: center; flex-shrink: 0; padding: 0 2px; }
+
+  /* === Hero Formula === */
+  .formula-hero { font-size: 22px; padding: 32px 24px; margin-top: 16px; }
+  .formula-hero .katex { font-size: 1.8em; }
 </style>
 </head>
 <body>
@@ -161,7 +178,45 @@
 <!-- ===== Section 03 · 认知科学重构 ===== -->
 <section id="s03" data-num="3">
   <span class="section-label">03 · 认知科学重构</span>
-  <h2 class="section-title">[解构"什么是擅长"+ 演化核心模型]</h2>
+  <h2 class="section-title">用认知科学重构：解构"什么是擅长"</h2>
+  <p class="section-subtitle">引入理论：盖洛普优势方程</p>
+
+  <div class="formula" data-katex>$$天赋 \times 投入 = 优势（擅长）$$</div>
+
+  <div class="three-pillars" style="grid-template-columns: 1fr 1fr;">
+    <div class="pillar">
+      <h4>天赋</h4>
+      <p>大脑天生输入和输出信息的"<span class="hl-blue">硬件习惯</span>"（不费力）。</p>
+    </div>
+    <div class="pillar">
+      <h4>投入</h4>
+      <p>兴趣（自主感）会疯狂源源不断地为"<span class="hl-blue">投入时间</span>"进行电量输送。</p>
+    </div>
+  </div>
+
+  <div class="callout-key">
+    <div class="callout-label">📌 本章核心结论 · 动态递进模型</div>
+    <p>热爱、擅长与商业不是孤立的，而是一个顺理成章的<strong>增强回路</strong>：</p>
+  </div>
+
+  <!-- 增强回路图（横向箭头链路） -->
+  <div class="flow-chain">
+    <div class="flow-node"><span class="flow-tag">兴趣</span>因为好玩试了一事</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node"><span class="flow-tag">天赋</span>底层硬件契合，没费太大力气</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node"><span class="flow-tag">胜任</span>做得不错并拿到成果</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node"><span class="flow-tag">归属</span>得到别人赞赏与认可</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node"><span class="flow-tag">擅长</span>更想做了，投入更多时间，极度精通</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node flow-final"><span class="flow-tag">变现</span>帮更多人解决问题并拿到付费</div>
+  </div>
+
+  <p style="margin-top:48px; text-align:center; font-size: 18px;">最终得到我们的演化核心模型：</p>
+
+  <div class="formula formula-hero" data-katex>$$天选事业 = 天赋 \times 兴趣 \times 变现$$</div>
 </section>
 
 <!-- ===== Section 04 · 拼图一 · 天赋 ===== -->
