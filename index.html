@@ -157,6 +157,49 @@
   .chip.is-active { background: var(--c-blue); color: var(--c-white); border-color: var(--c-blue); }
   .gallup-detail { margin-top: 14px; padding: 12px 16px; background: var(--c-callout-bg); border-radius: 4px; font-size: 14px; line-height: 1.7; }
   .gallup-detail strong { color: var(--c-blue); }
+
+  /* === Resource Grid (稀缺物 4 格) === */
+  .resource-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 16px; }
+  .resource-cell { background: var(--c-white); border: 1px solid var(--c-gray-border); border-radius: 4px; padding: 16px 14px; text-align: center; }
+  .resource-icon { font-size: 26px; margin-bottom: 6px; }
+  .resource-cell h5 { color: var(--c-blue); font-size: 15px; margin: 0 0 6px; font-weight: 700; }
+  .resource-cell p { font-size: 13px; line-height: 1.6; color: var(--c-blue-text); }
+
+  /* === Why Ladder (5Why 阶梯) === */
+  .why-ladder { border-left: 1px solid var(--c-gray-line); margin-top: 16px; }
+  .why-step { padding: 10px 0 10px 20px; border-bottom: 1px dashed var(--c-gray-border); display: grid; grid-template-columns: 60px 1fr; column-gap: 12px; row-gap: 4px; align-items: baseline; }
+  .why-step:last-child { border-bottom: none; }
+  .why-label { color: var(--c-blue); font-weight: 700; font-family: var(--font-en); }
+  .why-q { color: var(--c-blue-text); font-weight: 600; grid-column: 2; }
+  .why-a { grid-column: 2; color: var(--c-blue-text); line-height: 1.7; font-size: 14px; }
+  .why-final { background: var(--c-red-bg); border-left: 3px solid var(--c-red); padding-left: 17px; border-radius: 0 4px 4px 0; margin-left: -1px; }
+  .why-final .why-label { color: var(--c-red); }
+  .why-final .why-q { color: var(--c-red); }
+
+  /* === Cross Diagram (关键词碰撞连线图) === */
+  .cross-diagram { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 16px 0; padding: 18px 20px; background: var(--c-callout-bg); border-radius: 6px; }
+  .cross-kw { padding: 6px 14px; background: var(--c-white); border: 1px solid var(--c-blue); border-radius: 4px; color: var(--c-blue); font-weight: 600; font-size: 14px; }
+  .cross-x { color: var(--c-gray); font-weight: 700; font-size: 18px; }
+  .cross-eq { color: var(--c-red); font-weight: 700; font-size: 22px; margin: 0 4px; }
+  .cross-result { flex: 1 1 280px; color: var(--c-blue-text); font-size: 14px; line-height: 1.7; padding: 10px 14px; background: var(--c-white); border-left: 3px solid var(--c-red); border-radius: 0 4px 4px 0; }
+
+  /* === MVP Grid === */
+  .mvp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+  .mvp-card { background: var(--c-white); border-radius: 6px; padding: 22px 22px 18px; border: 1px solid var(--c-gray-border); display: flex; flex-direction: column; }
+  .mvp-q { font-family: var(--font-en); font-weight: 800; font-size: 13px; letter-spacing: 0.15em; color: var(--c-red); margin-bottom: 12px; }
+  .mvp-card h4 { color: var(--c-blue); font-size: 20px; margin-bottom: 8px; }
+  .mvp-card > p { color: var(--c-blue-text); font-size: 14px; line-height: 1.7; margin-bottom: 12px; }
+  .mvp-eg { background: var(--c-callout-bg); padding: 10px 12px; border-radius: 4px; font-size: 13px; line-height: 1.7; margin-top: auto; }
+  .mvp-eg strong { color: var(--c-blue); }
+
+  /* === Closing === */
+  .closing { text-align: center; }
+  .closing .formula-hero { text-align: center; }
+  .closing-recap { display: flex; flex-direction: column; gap: 12px; max-width: 560px; margin: 32px auto 48px; text-align: left; }
+  .recap-line { background: var(--c-white); padding: 12px 18px; border-left: 3px solid var(--c-blue); border-radius: 0 4px 4px 0; font-size: 15px; line-height: 1.7; }
+  .recap-tag { display: inline-block; padding: 1px 10px; background: var(--c-blue); color: var(--c-white); border-radius: 2px; font-size: 12px; font-weight: 700; margin-right: 10px; vertical-align: 1px; }
+  .closing-cta { font-size: 22px; color: var(--c-red); font-weight: 700; margin-top: 32px; }
+  .closing-q { font-size: 32px; color: var(--c-blue); margin-top: 24px; letter-spacing: 0.1em; }
 </style>
 </head>
 <body>
@@ -437,20 +480,113 @@
 
 <!-- ===== Section 05 · 拼图二 · 兴趣 ===== -->
 <section id="s05" data-num="5">
-  <span class="section-label">05 · 拼图二</span>
-  <h2 class="section-title">[兴趣：稀缺物盘点 + 5Why]</h2>
+  <span class="section-label">05 · 拼图二 · 兴趣</span>
+  <h2 class="section-title">稀缺物盘点 + 5Why 追问</h2>
+  <p class="section-subtitle">找兴趣就跟谈恋爱一样，看你有没有心甘情愿给 Ta 你认为最稀缺的资源。</p>
+
+  <!-- 技术 1：稀缺物追踪 -->
+  <h4 style="margin-top:32px">🛠️ 实操技术 1 · 稀缺物追踪</h4>
+  <div class="resource-grid">
+    <div class="resource-cell">
+      <div class="resource-icon">⏱️</div>
+      <h5>时间流向</h5>
+      <p>刷得停不下来的抖音/小红书标签、深夜还在看的书籍类别。</p>
+    </div>
+    <div class="resource-cell">
+      <div class="resource-icon">💰</div>
+      <h5>金钱流向</h5>
+      <p>账单里除了维持生存外，你愿意溢价付费的类目。</p>
+    </div>
+    <div class="resource-cell">
+      <div class="resource-icon">💗</div>
+      <h5>情绪心流</h5>
+      <p>让你忘记时间、极度亢奋或治愈的时刻。</p>
+    </div>
+    <div class="resource-cell">
+      <div class="resource-icon">💡</div>
+      <h5>灵感捕捉</h5>
+      <p>你的 flomo/备忘录里记录最多的奇思妙想。</p>
+    </div>
+  </div>
+
+  <!-- 技术 2：5Why -->
+  <h4 style="margin-top:48px">🛠️ 实操技术 2 · 5Why 深度剥离</h4>
+  <p style="color:var(--c-gray); margin: 4px 0 16px;">以购买"一次性袜子"为例</p>
+  <div class="why-ladder">
+    <div class="why-step"><span class="why-label">1Why</span><span class="why-q">为什么要买？</span><span class="why-a">随用随丢不用洗，减少行李占用。</span></div>
+    <div class="why-step"><span class="why-label">2Why</span><span class="why-q">为什么不想洗和占用行李？</span><span class="why-a">讨厌洗晾晒的管理和时间消耗，想让出行更轻松。</span></div>
+    <div class="why-step"><span class="why-label">3Why</span><span class="why-q">为什么讨厌晾晒管理？</span><span class="why-a">想减少生活中琐事的时间投入。</span></div>
+    <div class="why-step"><span class="why-label">4Why</span><span class="why-q">为什么不愿投入琐事？</span><span class="why-a">认为把精力和时间花在机械重复劳动上是对生命的浪费。</span></div>
+    <div class="why-step why-final"><span class="why-label">5Why</span><span class="why-q">为什么觉得是浪费？</span><span class="why-a"><strong>核心本质：</strong>我需要极高的"<strong>掌控感</strong>"和"<strong>自由度</strong>"，我更喜欢"创造"和"高效率"，而不是"维持现状"。</span></div>
+  </div>
+
+  <!-- 技术 3：关键词碰撞 -->
+  <h4 style="margin-top:48px">🛠️ 实操技术 3 · 关键词提取与交叉碰撞</h4>
+
+  <p style="margin-top:16px"><strong>提取赛道关键词：</strong></p>
+  <ul style="margin: 8px 0 16px;">
+    <li><strong>浅层：</strong>极简生活、空间收纳。</li>
+    <li><strong>底层：</strong>流程自动化与效率工具（消灭一切机械重复）、个人精力管理。</li>
+  </ul>
+
+  <p><strong>进行异质碰撞（连连看）：</strong></p>
+
+  <div class="cross-diagram">
+    <div class="cross-kw">神经科学</div>
+    <div class="cross-x">×</div>
+    <div class="cross-kw">教育学</div>
+    <div class="cross-x">×</div>
+    <div class="cross-kw">效率工具</div>
+    <div class="cross-eq">=</div>
+    <div class="cross-result">开发一套能让普通人根据大脑科学高效学习的个人 Skill Tree 自动化系统</div>
+  </div>
+
+  <p style="margin-top:16px; color:var(--c-gray); font-size: 14px;">💡 把你的兴趣清单（效率工具、精力管理、神经科学、空间美学、行为心理学……）两两/三三交叉，常常蹦出意想不到的方向。</p>
 </section>
 
 <!-- ===== Section 06 · 拼图三 · 变现 ===== -->
 <section id="s06" data-num="6">
-  <span class="section-label">06 · 拼图三</span>
-  <h2 class="section-title">[变现：MVP 三问]</h2>
+  <span class="section-label">06 · 拼图三 · 变现</span>
+  <h2 class="section-title">个人精益创业 MVP 三问</h2>
+  <p class="section-subtitle">天赋如果不封装成产品交付给别人，就只是一堆写在纸上的测试报告。</p>
+
+  <div class="mvp-grid">
+    <div class="mvp-card">
+      <div class="mvp-q">Who</div>
+      <h4>谁有痛点？</h4>
+      <p>谁会为了你擅长的这件事感到痛苦？</p>
+      <div class="mvp-eg"><strong>例：</strong>那些每天做数据报表、被低效机械重复折磨到深夜 12 点的打工人</div>
+    </div>
+    <div class="mvp-card">
+      <div class="mvp-q">What</div>
+      <h4>你的产品？</h4>
+      <p>你能提供一个什么具体的"最小好东西"帮他解决？</p>
+      <div class="mvp-eg"><strong>例：</strong>别去想开公司。一份消灭重复劳动的【自动化数据看板 Excel 模版】、一次 1 对 1 的效率陪跑咨询</div>
+    </div>
+    <div class="mvp-card">
+      <div class="mvp-q">How</div>
+      <h4>怎么让他知道？</h4>
+      <p>你通过什么渠道把这个好东西推到他眼前？</p>
+      <div class="mvp-eg"><strong>例：</strong>朋友圈现身说法、小红书垂直内容输出、熟人社群介绍背书</div>
+    </div>
+  </div>
 </section>
 
 <!-- ===== Section 07 · 收尾 ===== -->
-<section id="s07" data-num="7">
+<section id="s07" data-num="7" class="closing">
   <span class="section-label">07 · 收尾</span>
-  <h2 class="section-title">[总公式回扣]</h2>
+  <h2 class="section-title">回到那个核心公式</h2>
+
+  <div class="formula formula-hero" data-katex>$$天选事业 = 天赋 \times 兴趣 \times 变现$$</div>
+
+  <div class="closing-recap">
+    <div class="recap-line"><span class="recap-tag">天赋</span>认领你的底层 OS + 战术 Apps</div>
+    <div class="recap-line"><span class="recap-tag">兴趣</span>追踪稀缺物，5Why 挖到核心，关键词交叉碰撞</div>
+    <div class="recap-line"><span class="recap-tag">变现</span>Who · What · How，最小好东西先做出来</div>
+  </div>
+
+  <p class="closing-cta">现在轮到你了。</p>
+  <p class="closing-q">⛳️ Q &amp; A</p>
 </section>
 
 </body>
